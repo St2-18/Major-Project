@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Environment / secrets
+.env
+
+# OS / editor junk
+.DS_Store
+npm-debug.log*
