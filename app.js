@@ -32,7 +32,8 @@ async function main() {
 
 //root route
 app.get("/", (req, res) => {
-  res.send("root route");
+  // res.send("root route");
+  res.redirect("/routes/listing.js");
 });
 
 app.use("/listings", listings);
