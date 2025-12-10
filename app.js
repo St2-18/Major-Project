@@ -32,8 +32,7 @@ async function main() {
 
 //root route
 app.get("/", (req, res) => {
-  // res.send("root route");
-  res.redirect("/listings");
+  res.send("root route");
 });
 
 app.use("/listings", listings);
@@ -49,9 +48,7 @@ app.use((err, req, res, next) => {
   // res.status(statusCode).send(message);
 });
 
-//starting express server
-// app.listen(port, () => {
-//   console.log(`Server running on port ${port}.`);
-// });
-
-module.exports = app;
+// starting express server
+app.listen(port, () => {
+  console.log(`Server running on port ${port}.`);
+});
