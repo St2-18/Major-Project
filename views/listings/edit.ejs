@@ -34,10 +34,15 @@
           <label for="image" class="form-label">Image URL</label>
           <input
             value="<%= listing.image.url %>"
-            name="listing[image.url]"
+            name="listing[image][url]"
             type="text"
             class="form-control"
             required
+          />
+          <input
+            type="hidden"
+            name="listing[image][filename]"
+            value="<%= listing.image.filename %>"
           />
           <div class="invalid-feedback">Image URL is required</div>
         </div>
