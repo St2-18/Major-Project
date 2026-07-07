@@ -8,6 +8,7 @@
         method="POST"
         action="/listings/<%= listing._id %>?_method=PUT"
         class="needs-validation"
+        enctype="multipart/form-data"
         novalidate
       >
         <div class="mb-3">
@@ -31,20 +32,16 @@
         </div>
 
         <div class="mb-3">
-          <label for="image" class="form-label">Image URL</label>
-          <input
-            value="<%= listing.image.url %>"
-            name="listing[image][url]"
-            type="text"
-            class="form-control"
-            required
-          />
-          <input
-            type="hidden"
-            name="listing[image][filename]"
-            value="<%= listing.image.filename %>"
-          />
-          <div class="invalid-feedback">Image URL is required</div>
+          <label class="form-label">Current Images</label>
+          <% const displayImgs = (listing.images && listing.images.length > 0) ? listing.images : [listing.image]; %>
+          <div class="d-flex flex-wrap gap-2 mb-2">
+            <% for(let img of displayImgs) { %>
+              <img src="<%= img.url %>" alt="listing image" style="height:80px;width:80px;object-fit:cover;border-radius:0.5rem;" />
+            <% } %>
+          </div>
+          <label for="edit-images" class="form-label">Add More Images</label>
+          <input name="listing[images]" id="edit-images" type="file" class="form-control" multiple accept="image/*" />
+          <div class="form-text">Selected images will be added to existing ones.</div>
         </div>
 
         <div class="row">

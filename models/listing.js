@@ -25,6 +25,13 @@ const listingSchema = new Schema({
       url: "https://i.pinimg.com/originals/03/89/41/038941fb2298e5cae26c3852f211350f.jpg",
     },
   },
+  // Multiple images array (new listings). Falls back to legacy `image` on show page.
+  images: [
+    {
+      url: { type: String },
+      filename: { type: String },
+    },
+  ],
 
   price: {
     type: Number,

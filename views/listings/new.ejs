@@ -8,6 +8,7 @@
         method="POST"
         action="/listings"
         class="needs-validation"
+        enctype="multipart/form-data"
         novalidate
       >
         <div class="mb-3">
@@ -34,14 +35,9 @@
         </div>
 
         <div class="mb-3">
-          <label for="image" class="form-label">Image Link</label>
-          <input
-            placeholder="Image url"
-            name="listing[image][url]"
-            type="text"
-            class="form-control"
-          />
-          <div class="valid-feedback">If empty, default image is added</div>
+          <label for="images" class="form-label">Images</label>
+          <input name="listing[images]" id="images" type="file" class="form-control" multiple accept="image/*" />
+          <div class="valid-feedback">You can upload multiple images. If empty, a default image is added.</div>
         </div>
 
         <div class="row">
