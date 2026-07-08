@@ -34,6 +34,7 @@ footer {
   color: #222222;
   margin-right: 1rem;
 }
+
 .f-info-links a:hover {
   text-decoration: underline;
 }
@@ -91,6 +92,7 @@ footer {
 .card-img-overlay {
   opacity: 0;
 }
+
 .card-img-overlay:hover {
   opacity: 0.2;
   background-color: white;
@@ -184,8 +186,13 @@ footer {
   opacity: 1;
 }
 
-.carousel-arrow-left  { left: 0.6rem; }
-.carousel-arrow-right { right: 0.6rem; }
+.carousel-arrow-left {
+  left: 0.6rem;
+}
+
+.carousel-arrow-right {
+  right: 0.6rem;
+}
 
 /* Dot indicators */
 .carousel-dots {
@@ -211,4 +218,11 @@ footer {
 .carousel-dot.active {
   background: #fff;
   transform: scale(1.25);
+}
+
+/* Mapbox */
+#map {
+  height: 350px;
+  width: 100%;
+  border-radius: 10px;
 }

@@ -46,6 +46,9 @@ const listingSchema = new Schema({
     type: String,
     required: true,
   },
+  // Geographic coordinates for map display
+  lat: { type: Number },
+  lng: { type: Number },
   reviews: [
     {
       type: Schema.Types.ObjectId,

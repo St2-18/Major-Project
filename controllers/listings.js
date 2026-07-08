@@ -1,4 +1,6 @@
 const Listing = require("../models/listing.js");
+const { geocode } = require('../utils/geocode');
+
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
   res.render("listings/index.ejs", { allListings });
@@ -45,6 +47,14 @@ module.exports.createListing = async (req, res, next) => {
   newListing.images = uploadedImages;
   // Keep legacy `image` field pointing to the first image for index-page thumbnails
   newListing.image = { url: uploadedImages[0].url, filename: uploadedImages[0].filename };
+
+  // Geocode the location to get coordinates for the map
+  const coords = await geocode(newListing.location);
+  if (coords) {
+    newListing.lat = coords.lat;
+    newListing.lng = coords.lng;
+  }
+
   await newListing.save();
   req.flash("success", "New Listing Created!");
   res.redirect("/listings");
@@ -102,6 +112,15 @@ module.exports.updateListing = async (req, res) => {
         url: listing.images[0].url,
         filename: listing.images[0].filename,
       };
+    }
+  }
+
+  // Re-geocode if location changed
+  if (req.body.listing && req.body.listing.location) {
+    const coords = await geocode(listing.location);
+    if (coords) {
+      listing.lat = coords.lat;
+      listing.lng = coords.lng;
     }
   }
 
